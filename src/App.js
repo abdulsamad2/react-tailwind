@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import NavBar from "./components/NavBar";
+import Hero from "./components/Hero";
+import Section1 from "./components/Section1";
+import Product from "./components/Product";
+import data from "./data";
+
+const ProductElement = data.map((item) => {
+  return (
+    <Product
+      key={item.id}
+      // img={item.coverImg}
+      // rating={item.rating}
+      // reviewCount={item.stats.rating}
+      // location={item.location}
+      // title={item.title}
+      // price={item.price}
+      // openSpots={item.openSpots}
+      {...item}
+    />
+  );
+});
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="max-w-2xl mx-auto border-cyan-600 p-2 border-2">
+      <NavBar></NavBar>
+      <Hero></Hero>
+      <Section1></Section1>
+      <div className="flex flex-auto space-x-4">{ProductElement}</div>
     </div>
   );
 }
